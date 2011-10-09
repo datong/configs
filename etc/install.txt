@@ -1,0 +1,435 @@
+U盘引导:
+------------------------------------------------------------------------------------------------------------------------------------------------------
+1.mkdir /win   
+2.mount -r -t ntfs /dev/sda1 /win   
+3.modprobe loop   
+4.losetup /dev/loop6 /win/arch.iso   
+5.ln -s /dev/loop6 /dev/archiso  
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+安装:
+
+配置: 用nano简单实用
+
+rc.conf 改下hostname以及网络设置
+
+mkinitcpio.conf和modprobe.conf直接54
+
+resolv.conf 添加DNS服务器 可以直接填 也可以填路由器的IP
+
+hosts 在那一行最后面 空格+主机名(rc.conf里设置的)
+ 
+hosts.deny和hosts.allow也都54
+
+locale-gen 注释掉en_US.ISO-8859-1添上zh_CN的四个
+
+安装GRUB 编辑menu.lst 选sda安装到MBR 没有raid的话选no
+
+exit
+
+ 
+------------------------------------------------------------------------------------------------------------------------------------------------------
+配置:
+
+ 
+安装yaourt
+
+测试所有镜像和它们的响应延迟（ping）并输出至list 参考list改下mirrorlist的顺序
+
+#rankmirrors -v /etc/pacman.d/mirrorlist > list
+ 先在/etc/pacman.conf文件里，最后添加两行(64位的就将i686换成x86_64)
+ 
+[archlinuxfr]
+Server = http://repo.archlinux.fr/i686
+
+#pacman -Sy yaourt
+#pacman -Syu 升级系统
+#yaourt -S base-devel 基本编译包
+yaour -S python dbus ntfs-3g 
+
+/etc/rc.conf 添加 DAEMONS=(...dbus...)
+
+配置CPU频率
+
+#yaout -S cpufrequtils
+把CPU频率在/etc/rc.conf里加入到启动进程(daemons)中
+DAEMONS=(... @cpufreq...)
+编辑配置文件/etc/conf.d/cpufreq 去掉下面的两行最大最小频率设置
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+声音:
+
+ALSA 安装与设置
+#yaourt alsa-utils alsa-oss
+#alsamixer
+调节Master和PCM音量 M取消静音 设好以后退出测试下效果
+#aplay /usr/share/sounds/alsa/F,ront_Center.wav
+可以的话保存设置
+#lsactl store
+------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+------------------------------------------------------------------------------------------------------------------------------------------------------
+安装Xorg:
+
+#yaourt xorg-server xorg-utils xorg-server-utils xorg-xinit xf86-input-synaptics xf86-input-evdev  libgl  mesa
+
+
+安装显卡驱动:
+
+#lspci | grep VGA
+#yaorut -Ss xf86-video | less
+#yaorut -S xf86-video-intel-legacy
+# Xorg -configure
+#X -config /root/xorg.conf.new
+ 屏幕中央有一个白色的 X 鼠标或是触摸板可以移动 CTRL-Alt-Backspace 退出 将配置文件移过去
+#mv xorg* /etc/X11/xorg.conf
+
+ ------------------------------------------------------------------------------------------------------------------------------------------------------
+添加用户设置密码并赋予组权限
+#useradd –mG users,audio,optical,storage,video,network,dbus,wheel -s /bin/bash USER_NAME
+#passwd USER_NAME
+
+设置sudo
+#yaourt -S sudo
+# visudo
+最下面添加一行 USER_NAME   ALL=(ALL) ALL
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+安装VM: [openbox] 
+
+pacman -S openbox obconf obmenu lxappearance tint2 conky obmenu wicd feh gedit
+$ mkdir -p ~/.config/openbox/
+$ cp /etc/xdg/openbox/rc.xml ~/.config/openbox
+$ cp /etc/xdg/openbox/autostart.sh ~/.config/openbox
+$ cp /etc/xdg/openbox/menu.xml ~/.config/openbox
+修改你的~/.xinitrc 添加一句
+exec ck-launch-session openbox-session
+------------------------------------------------------------------------------------------------------------------------------------------------------
+安装输入法: [ibus]
+
+pacman -S ibus ibus-pinyin ibus-table
+
+修改.bashrc
+添加 export LC_CTYPE=zh_CN.UTF-8
+
+设置环境变量
+export LC_CTYPE=zh_CN.UTF-8
+export LESS="-R"
+export XMODIFIERS="@im=ibus" 
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=xim
+ ------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 
+------------------------------------------------------------------------------------------------------------------------------------------------------
+字体设置:
+ 
+yaourt  -Rns xorg-fonts-75dpi xorg-fonts-100dpi
+yaourt -S ttf-ms-fonts ttf-cheapskate artwiz-fonts
+yaourt -S ttf-dejavu ttf-bitstream-vera wqy-bitmapfont wqy-zenhei wqy-bitmapfont  wqy-microhei 
+yaourt -S Monaco
+
+1.配置文件
+
+到/etc/fonts目录下可以看到有四个文件fonts.dtd是和xml格式相关的.fonts.conf是系统
+
+的全局设置,上面的注释非常详细,当然你不应该编辑该文件.conf.d下的文件都是从
+
+conf.avail链接过去的,系统会依次读conf.d下的配置文件,当你要取消某种配置时,删除
+
+conf.d下的链接文件就好了,原有的配置依然保存在conf.avail/中
+
+conf.avail中有README,介绍了每个文件的用途
+
+00-09开头:指定字体文件夹,事实上/etc/X11/xorg.conf和/etc/fonts/font.conf已经指
+
+定得很全了
+
+10-19开头:系统的默认渲染函数,我理解成和函数库的作用一样
+
+20-29开头:特定字体的渲染规则,从别人的例子中你可以学会如何选择特定字体,并对参数
+
+进行调整
+
+30-39开头:字体家族的名字替换
+
+40-49开头:共有特性的定义,实际在这里把所有字体分成了三类,serif(有衬线),sans-serif
+
+(无衬线),monospace(等宽字体)
+
+50-59开头:用户自定义字体配置文件,如果需要自定义特性,应该放到51-local.conf中
+
+60-69开头:字体别名设置,latin(拉丁语,欧洲语言),nonlatin(非拉丁语,中文字体应该能在
+
+这里找到),每个文件也是按serif,sans-serif,monospace分类的,这里会按出现
+
+的先后顺序优先选择靠前的字体
+
+70-79开头:选择特定字体进行调整
+
+80-89开头:对所有字体扫描,找到匹配的进行相应的设置
+
+90-99开头:合成字体
+
+事实上,可能需要我们手工添加设置的只有
+
+40-generic.conf 51-local.conf 65-nonlatin.conf
+
+ 
+
+2.dpi
+
+ 
+
+关于dpi设置,linuxsir论坛已经有很多讨论了,到论坛搜索dpi，应该不会让失望的,
+
+www.archlinux.org的wiki上也有很好的总结
+
+算出你合适的dpi值,在安装字体完后添加到/etc/fonts/conf.avail/51-local.conf中
+
+ 
+
+**调整dpi为我喜欢的90
+
+将如下代码拷贝到/etc/fonts/conf.avail/51-local.conf中
+
+<match target="pattern">
+
+<edit name="dpi" mode="assign" >
+
+<double>90</double>
+
+</edit>
+
+</match>
+
+ 
+
+3.字体调整
+
+ 
+
+编辑/etc/fonts/conf.avail/65-nonlatin.conf
+
+调整自己喜欢的字体的优先级 把喜欢的放在最前面
+
+三种都要设
+
+衬线
+
+<family>Bitstream Vera Serif</family>
+
+<family>WenQuanYi Bitmap Song</family>
+
+<family>DejaVu Serif</family>
+
+无衬线
+
+<family>Bitstream Vera Serif</family>
+
+<family>WenQuanYi Bitmap Song</family>
+
+<family>DejaVu Serif</family>
+
+等宽
+
+<family>DejaVu Sans Mono</family>
+
+<family>Bitstream Vera Sans Mono</family>
+
+<family>WenQuanYi Bitmap Song</family>
+
+ 
+------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+安装 terminal:
+
+yaourt -S terminal rxvt-unicode
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 一些 archlinux 小问题 及解决办法:
+
+ *********
+  urxvt启动速度慢: 输入法的配置方式不是Root时，它要自动找相关渲染字体。
+只要将输入法方式改为Root就瞬间启动 
+
+命令参数 -pt Root
+资源配置 URxvt.preeditType:Root
+
+*********
+
+*********
+archlinux 时间问题
+
+sudo nano /etc/rc.conf 
+HARDWARECLOCK="localtime"
+ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+sudo rm /var/lib/hwclock/adjtime
+sudo reboot
+
+*********
+archlinux 麦克风&摄像头:
+
+* AlsaMixer 设置:
+
+F5
+
+[ Master Headphon   PCM ] 80-95
+
+[Capture:65 Digital:63]  这个好象就是麦克风的音量 反正我调它可以改边麦的音量 --||
+
+[Input So] 设置成了Front Mi
+
+
+AlsaMixer，在Capture处，按空格键，显示：
+
+L  R
+
+CAPTUR
+
+*摄像头
+
+
+Multimedia devices --->
+[*] Video capture adapters ---> 
+[*] V4L USB devices ---> 
+<M> USB Video Class(UVC)
+[*] UVC input events device support 
+
+cheese
+
+*********
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+VPn 连接:
+
+Microsoft VPN client setup with pptpclient
+
+Install
+
+You can install it with this command
+
+pacman -S pptpclient
+Configure
+
+Create new options.pptp
+
+mv /etc/ppp/options.pptp /etc/ppp/options.pptp.orig && nano /etc/ppp/options.pptp
+And replace
+
+lock noauth refuse-eap refuse-chap refuse-mschap nobsdcomp nodeflate
+Add your user and passwords to chap-secrets looklike
+
+USERNAME pptpd PASSWD *
+Get your conection
+
+nano /etc/ppp/peers/vpn
+And replace
+
+remotename pptpd ipparam vpn pty "pptp YOUR-SERVER-IP --nolaunchpppd" name USERNAME usepeerdns require-mppe-128 refuse-eap noauth file /etc/ppp/options.pptp
+Use this command to conect to pptp vpn
+
+pon vpn
+And after some second add your route
+
+route add default dev ppp0
+For disconnecting use
+
+poff vpn
+
+to further diagnose a failure, add options to the command:
+
+pon $TUNNEL debug dump logfd 2 nodetach
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+常用的软件:
+
+ 
+
+-Install common codecs: pacman -S gstreamer0.10-{{bad,good,ugly,base}{,-plugins},ffmpeg}
+
+-Install flash: pacman -S flashplugin ttf-ms-fonts
+
+-Install java: pacman -S jre
+
+-Install a browser: pacman -S firefox
+
+-Install an editor: pacman -S leafpad
+
+-A file manager: pacman -S thunar thunar-volman thunar-thumbnailers ffmpegthumbnailer thunar-archive-plugin thunar-media-tags-plugin
+
+-NTFS write support: pacman -S ntfs-3g
+
+-A disk partitioner: pacman -S gparted
+
+-Media swiss knife: pacman -S vlc mplayer smplayer exaile
+
+-An archive program: pacman -S file-roller p7zip
+
+-A taskbar: pacman -S tint2
+
+-A wallpaper manager: pacman -S nitrogen
+
+-An image viewer: pacman -S gpicview
+
+-A screenshot utility: pacman -S scrot
+
+-A volume manager: pacman -S aumix
+
+-A cd burner: pacman -S k3b
+
+-A pdf viewer: pacman -S evince
+
+-A drop down terminal: pacman -S tilda
+
+-A run dialog box: pacman -S gmrun
+
+ 
+
+-Microsoft Office's equivalent: pacman -S openoffice-base
+
+-Install e-mail manager: pacman -S alpine
+
+-For your sticky notes needs: pacman -S xpad
+
+-A calculator: pacman -S speedcrunch
+
+-install html editor: pacman -S bluefish
+
+-Install a p2p application: pacman -S frostwire
+
+-Install a torrent manager: pacman -S deluge
+
+-Install a network traffic listener: pacman -S wireshark tcpflow
+
+-Install an HEX editor: pacman -S bless
+
+-A dynamic menu launcher: pacman -S dmenu
+
+-An msn client: pacman -S emesene
+
+-A photoshop-like program: pacman -S gimp
+
+-An ftp client: pacman -S gftp
+
+-A network tool: pacman -S gnome-nettool
+
+-A dvd ripper: pacman -S k9copy
+
+-An audio cd extractor: pacman -S sound-juicer
+
+-A sound converter: pacman -S soundconverter
+
+-A scanner utility: pacman -S xsane
+
+-A chm viewer: pacman -S xchm
+
+-For video conference: pacman -S skype 
+------------------------------------------------------------------------------------------------------------------------------------------------------
+ my config:
+http://datong.github.com/configs/
+

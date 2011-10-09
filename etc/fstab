@@ -1,0 +1,18 @@
+# 
+# /etc/fstab: static file system information
+#
+# <file system>        <dir>         <type>    <options>          <dump> <pass>
+devpts                 /dev/pts      devpts    defaults            0      0
+shm                    /dev/shm      tmpfs     nodev,nosuid        0      0
+
+#/dev/cdrom             /media/cd   auto    ro,user,noauto,unhide   0      0
+#/dev/dvd               /media/dvd  auto    ro,user,noauto,unhide   0      0
+#/dev/fd0               /media/fl   auto    user,noauto             0      0
+
+UUID=1d48a3ba-fb91-4945-8c10-3ea301e04909 swap swap defaults 0 0
+UUID=b3ce0508-17b8-44d8-9548-10c1c73898e5 /usr reiserfs defaults 0 1
+UUID=4a14fd7e-bf36-4393-8583-037e47209a59 /home reiserfs defaults 0 1
+UUID=45f6ec2d-2aee-4dd7-bb11-f2988f621277 /pentest reiserfs defaults 0 1
+UUID=0ac3bd8f-951b-4163-ad05-979e4fc673e6 / reiserfs defaults 0 1
+UUID=ddabccd1-6d17-4261-bc86-b695180deb95 /boot reiserfs defaults 0 1
+UUID=c8217b0f-a666-4ebb-a32c-84f585787edf /opt reiserfs defaults 0 1

@@ -1,0 +1,83 @@
+Xft.dpi:90
+
+!xpdf.title: PDF
+
+!XTerm*locale: true
+!XTerm*utf8Title: true
+!XTerm*fontMenu*fontdefault*Label: Default
+!XTerm*faceName:Microsoft YaHei:antialias=True:pixelsize=15
+XTerm*faceNameDoublesize:Microsoft YaHei:pixelsize=15
+!XTerm*faceSize: 12
+!XTerm*faceSize1: 12
+!XTerm*faceSize2: 12
+!XTerm*faceSize3: 12
+!XTerm*faceSize4: 12
+!XTerm*faceSize5: 12
+!XTerm*faceSize6: 12
+!XTerm.cjkWidth:true
+!XTerm*background: black
+!XTerm*foreground: green
+!XTerm*scrollBar: true
+!XTerm*rightScrollBar: true
+!XTerm*jumpScroll: true
+!XTerm*SaveLines: 3000
+
+
+!look and feel
+xterm.termName: xterm-256color
+xterm.geometry: 80x36
+xterm*scrollBar: false
+xterm*rightScrollBar: true
+xterm*loginshell: true
+xterm*cursorBlink: true
+xterm*background:  black
+xterm*foreground:  gray
+xterm.borderLess: true
+xterm.cursorBlink: true
+xterm*colorUL: yellow
+xterm*colorBD: white
+
+!fix alt key input
+xterm*eightBitInput: false
+xterm*altSendsEscape: true
+
+!print color and bold/underline attributes
+xterm*printAttributes: 2
+xterm*printerCommand: cat > ~/xtermdump
+
+!mouse selecting to copy, ctrl-v to paste
+!Ctrl p to print screen content to file
+XTerm*VT100.Translations: #override \
+    Alt <KeyPress> V: insert-selection(CLIPBOARD,PRIMARY,CUT_BUFFER0) \n\
+    <BtnUp>: select-end(CLIPBOARD,PRIMARY,CUT_BUFFER0) \n\
+    Alt <KeyPress> C: print() \n
+
+!font and locale
+xterm*locale: true
+xterm.utf8:     true
+xterm*utf8Title: true
+!xterm*fontMenu*fontdefault*Label: Default
+!xterm*faceName: Microsoft YaHei:antialias=True:pixelsize=15
+!xterm*faceName: Microsoft YaHei:antialias=True:pixelsize=20
+!xter*boldFont: DejaVu Sans Mono:style=Bold:pixelsize=15
+!xterm*faceNameDoublesize: Microsoft YaHei:pixelsize=16:antialias=True
+xterm*xftAntialias: true
+xterm*cjkWidth:false
+
+!-- Tango color scheme
+!*xterm*color0: #2e3436
+!*xterm*color1: #cc0000
+!*xterm*color2: #4e9a06
+!*xterm*color3: #c4a000
+!*xterm*color4: #3465a4
+!*xterm*color5: #75507b
+!*xterm*color6: #0b939b
+!*xterm*color7: #d3d7cf
+!*xterm*color8: #555753
+!*xterm*color9: #ef2929
+!*xterm*color10: #8ae234
+!*xterm*color11: #fce94f
+!*xterm*color12: #729fcf
+!*xterm*color13: #ad7fa8
+!*xterm*color14: #00f5e9
+!*xterm*color15: #eeeeec
