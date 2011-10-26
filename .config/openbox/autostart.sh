@@ -24,7 +24,7 @@ test -z $BG || $BG -solid "#303030"
 
 killall feh > /dev/null 2>&1
 
-feh --bg-scale ~/..wallpaper.jpg
+feh --bg-scale ~/.wallpaper.jpg
 
 killall tint2 > /dev/null 2>&1
 tint2 &
