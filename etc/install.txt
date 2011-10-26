@@ -123,7 +123,10 @@ export QT_IM_MODULE=xim
  
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 字体设置:
- 
+
+!#yaourt -S cairo-ubuntu fontconfig-ubuntu freetype2-ubuntu libxft-ubuntu
+!#yaourt -S cairo-cleartype freetype2-cleartype libxft-cleartype 
+
 yaourt -Rns xorg-fonts-75dpi xorg-fonts-100dpi
 yaourt -S ttf-ms-fonts ttf-cheapskate artwiz-fonts
 yaourt -S ttf-dejavu ttf-bitstream-vera wqy-bitmapfont  wqy-microhei 
