@@ -71,14 +71,14 @@ ALSA 安装与设置
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 安装Xorg:
 
-#yaourt xorg-server xorg-utils xorg-server-utils xorg-xinit xf86-input-synaptics xf86-input-evdev  libgl  mesa
+#yaourt xorg-server xorg-utils xorg-server-utils xorg-xinit xf86-input-synaptics xf86-input-evdev  libgl  mesa consolekit
 
 
 安装显卡驱动:
 
 #lspci | grep VGA
 #yaorut -Ss xf86-video | less
-#yaorut -S xf86-video-intel-legacy
+#yaorut -S xf86-video-intel
 # Xorg -configure
 #X -config /root/xorg.conf.new
  屏幕中央有一个白色的 X 鼠标或是触摸板可以移动 CTRL-Alt-Backspace 退出 将配置文件移过去
@@ -124,10 +124,10 @@ export QT_IM_MODULE=xim
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 字体设置:
  
-yaourt  -Rns xorg-fonts-75dpi xorg-fonts-100dpi
+yaourt -Rns xorg-fonts-75dpi xorg-fonts-100dpi
 yaourt -S ttf-ms-fonts ttf-cheapskate artwiz-fonts
-yaourt -S ttf-dejavu ttf-bitstream-vera wqy-bitmapfont wqy-zenhei wqy-bitmapfont  wqy-microhei 
-yaourt -S Monaco
+yaourt -S ttf-dejavu ttf-bitstream-vera wqy-bitmapfont  wqy-microhei 
+yaourt -S Monaco-linux-font
 
 1.配置文件
 
