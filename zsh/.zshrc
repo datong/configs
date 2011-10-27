@@ -133,13 +133,13 @@ setprompt () {
 	#	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
 	#}
 
-    #PROMPT='%{$fg_bold[grey]%}[%{$fg_bold[cyan]%}%~%{$reset_color%}%{$fg_bold[grey]%}]%{$reset_color%}%{$reset_color%}
-#-%{$fg_bold[red]%}>%{$reset_color%} '
+    #PROMPT='%{$fg_bold[grey]%}[%{$fg_bold[cyan]%}%~%{$reset_color%}%{$fg_bold[grey]%}]%{$reset_color%}%{$reset_color%}#-%{$fg_bold[red]%}>%{$reset_color%} '
     #RPROMPT='%{$fg[cyan]%}%D{%H:%M}%{$reset_color%}'
     #PROMPT='%{\e[0;34m%}[%*] %{\e[0;33m%}[%~]%{\e[0;31m%} :%{\e[0m%} '
 }
 setprompt
-export PS1="$(print '%M %~ >>> ')"
+#export PS1="$(print '%n %~ >>> ')"
+export PS1="$(print '\033[92m%n %~ >>> ')"
 #export PS1="$(print '%{\e[0;34m%}%M %{\e[1;35m%}%~%{\e[0;31m%} >>>%{\e[0m%} ')"
 #export PS1="$(print '%{\e[1;31m%}%n %{\e[1;31m%}>>>%{\e[0m%} ')"
 # }}}
