@@ -1,37 +1,28 @@
-#-------------------------------------------------------------------------------------
-# ~/.screenrc
-# Last modified 18/11/2008
-#-------------------------------------------------------------------------------------
-
 startup_message off
-vbell off
-vbell_msg "[[[ ding ]]]"
-activity "active: %n (%t) [%w:%s]"
-bell "bell: %n (%t) [%w:%s]^G"
-msgwait 2 # 1 second messages
-defscrollback 10000
-
-autodetach on
-deflogin on
-defutf8 on
+defscrollback 1024
 altscreen on
-defbce on
-defflow off
+autodetach on
 nonblock on
-defhstatus "screen: ^En (^Et)"
-term screen-256color
-terminfo rxvt* 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
-#termcapinfo rxvt|rxvt-unicode|urxvt|rxvt-256color|screen|xs|rxvt ti@:te@
-#sorendition +b kG
 
-#[randy@voodoo] updates :: none                        1 irssi  [2 vim .screenrc]
-#hardstatus alwayslastline "%{= dd} %=%-w[%n %t]%+w" 
-caption always "%{= dd}%{b}[ %=%{w}%?%-Lw%?%{b}(%{W}%n*%f %t%?(%u)%?%{b})%{w}%?%+Lw%?%?%= %{b}][%{B} %H %{W}%l %{b}]"
+escape `
 
-# Default apps
-# screen -t irc weechat-curses
-screen zsh
-screen htop
+shell -${SHELL}
 
-bindkey "^[Od" prev
-bindkey "^[Oc" next
+vbell_msg "[[[ ding ]]]"
+vbell off
+
+bindkey -k k1 prev
+bindkey -k k2 next
+
+shelltitle "$ |zsh"
+
+caption always "%{=b dw}:%{-b dw}:%{=b dk}[ %{-b dw}%{-b dg}$USER%{-b dw}@%{-b dg}%H %{=b dk}] [ %= %?%{-b dg}%-Lw%?%{+b dk}(%{+b 
+dw}%n:%t%{+b dk})%?(%u)%?%{-b dw}%?%{-b dg}%+Lw%? %{=b dk}]%{-b dw}:%{+b dw}:"
+
+hardstatus on
+hardstatus alwayslastline
+#hardstatus string '%{= mK}%-Lw%{= KW}%50>%n%f* %t%{= mK}%+Lw%< %{= kG}%-=%D %d %M %Y %c:%s%{-}'
+#hardstatus string '%{= kG}%-Lw%{= kW}%50> %n%f* %t%{= kG}%+Lw%< %{= kG}%-=%c:%s%{-}'
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c 
+%{g}]'
+

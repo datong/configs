@@ -132,7 +132,7 @@ pacman -S gsfonts
 yaourt -Rns xorg-fonts-75dpi xorg-fonts-100dpi
 yaourt -S ttf-ms-fonts ttf-liberation ttf-cheapskate artwiz-fonts
 yaourt -S ttf-dejavu wqy-microhei 
-yaourt -S Monaco-linux-font
+yaourt -S Monaco-linux-font terminus-font
 
 
 1.配置文件
