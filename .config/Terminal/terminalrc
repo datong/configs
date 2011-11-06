@@ -28,10 +28,10 @@ AccelNextTab=<Control>1
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
 FontAllowBold=FALSE
 ColorForeground=#ccccccccbbbb
-BackgroundDarkness=0.910000
+BackgroundDarkness=0.610000
 BackgroundImageFile=/opt/images/as.jpg
 BackgroundImageStyle=TERMINAL_BACKGROUND_STYLE_STRETCHED
 TitleMode=TERMINAL_TITLE_REPLACE
-ColorBackground=#56b556b556b5
+ColorBackground=#319620fe20fe
 BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
 
