@@ -2,6 +2,6 @@
 # TINT2CONF CONFIG FILE
 default_theme = /home/arus7/.config/tint2/black.tint2rc
 cmd_property = python2.7 /usr/bin/tintwizard.py
-width = 500
-height = 343
+width = 621
+height = 507
 
