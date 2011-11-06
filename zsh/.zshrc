@@ -100,8 +100,8 @@ zstyle ':completion:*:options' auto-description '%d'
 # {{{ Window Title
 case $TERM in
     *xterm*|rxvt|rxvt-unicode|rxvt-256color|(dt|k|E)term|terminal|shell)
-    precmd () { print -Pn "\e]0;Predator\a" }
-    preexec () { print -Pn "\e]0;Predator\a" }
+    precmd () { print -Pn "\e]0;%M\a" }
+    preexec () { print -Pn "\e]0;%M\a" }
   ;;
     screen)
       precmd () {
