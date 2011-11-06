@@ -124,17 +124,18 @@ export QT_IM_MODULE=xim
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 字体设置:
 
-!#yaourt -S cairo-ubuntu fontconfig-ubuntu freetype2-ubuntu libxft-ubuntu
+yaourt -S cairo-ubuntu fontconfig-ubuntu freetype2-ubuntu libxft-ubuntu
 !#yaourt -S cairo-cleartype freetype2-cleartype libxft-cleartype 
--#sudo pacman -S --asdeps freetype2 libxft cairo fontconfig
+|#sudo pacman -S --asdeps freetype2 libxft cairo fontconfig
 
-pacman -S gsfonts
+yaourt -S font-bh-ttf ttf-arphic-ukai ttf-arphic-uming ttf-bitstream-vera ttf-cheapskate ttf-dejavu ttf-fireflysung ttf-ms-fonts wqy-bitmapfont wqy-zenhei
 yaourt -Rns xorg-fonts-75dpi xorg-fonts-100dpi
-yaourt -S ttf-ms-fonts ttf-liberation ttf-cheapskate artwiz-fonts
-yaourt -S ttf-dejavu wqy-microhei 
 yaourt -S Monaco-linux-font terminus-font
+tar fontconfig.tar.gz
+cd fontconfig && makepkg
 
 
+///////////////////////////////////////////////////////////////////////////////
 1.配置文件
 
 到/etc/fonts目录下可以看到有四个文件fonts.dtd是和xml格式相关的.fonts.conf是系统
@@ -203,7 +204,7 @@ www.archlinux.org的wiki上也有很好的总结
 
 <edit name="dpi" mode="assign" >
 
-<double>90</double>
+<double>96</double>
 
 </edit>
 
@@ -245,7 +246,8 @@ www.archlinux.org的wiki上也有很好的总结
 
 <family>WenQuanYi Bitmap Song</family>
 
- 
+////////////////////////////////////////////////////////////////////////
+
 ------------------------------------------------------------------------------------------------------------------------------------------------------
  
 
