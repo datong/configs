@@ -6,25 +6,25 @@
 # ID 1
 rounded = 7
 border_width = 0
-background_color = #000000 30
+background_color = #000000 27
 border_color = #FFFFFF 100
 
 # ID 2
 rounded = 5
 border_width = 0
-background_color = #FFFFFF 7
+background_color = #FFFFFF 4
 border_color = #FFFFFF 0
 
 # ID 3
 rounded = 5
 border_width = 0
-background_color = #FFFFFF 19
+background_color = #FFFFFF 16
 border_color = #FFFFFF 100
 
 # ID 4
 rounded = 1
-border_width = 1
-background_color = #0DA9F7 11
+border_width = 0
+background_color = #0DA9F7 8
 border_color = #58A2C7 100
 
 # Panel
@@ -88,7 +88,7 @@ systray_icon_asb = 70 0 0
 # Clock
 time1_format = %H:%M
 time1_font = sans 8
-time2_format = %n%a-%d
+time2_format = %n%b-%d
 time2_font = Sans 7
 clock_font_color = #FFFFFF 60
 clock_tooltip = %Y/%B/%d - %a
@@ -103,7 +103,7 @@ tooltip_show_timeout = 0
 tooltip_hide_timeout = 0
 tooltip_background_id = 4
 tooltip_font = Sans 10
-tooltip_font_color = #1994D1 80
+tooltip_font_color = #616161 68
 
 # Mouse
 mouse_middle = none
