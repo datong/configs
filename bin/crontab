@@ -1,0 +1,1 @@
+*/19 * * * * sudo /usr/bin/ntpdate ntp.api.bz; sudo hwclock --systohc;

@@ -1,0 +1,267 @@
+**我使用的是方法二**
+
+方法一.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+http://www.linuxsir.org/bbs/printthread.php?t=320947
+
+内有3个字体：Lucida Grande，STHeiti,Lihei Pro。Lihei Pro内含Lucida Grande。
+
+ 
+
+解包
+
+代码:
+
+tar -xf fonts.tar.gz && cd fonts
+
+ 
+
+编辑xorg.conf增加TTF字体路径，如果你的xorg.conf是用hwd生成的话，只需要取消注释。
+
+代码:
+
+sudo vi /etc/X11/xorg.conf
+
+代码:
+
+# Additional fonts: Locale, Gimp, TTF...
+
+        FontPath    "/usr/share/fonts/cyrillic"
+
+        FontPath    "/usr/share/fonts/TTF"
+
+#        FontPath    "/usr/share/lib/X11/fonts/latin2/100dpi"
+
+ 
+
+复制字体
+
+代码:
+
+sudo cp LiHeiPro.ttf LucidaGrande.ttf stheiti.ttf /usr/share/fonts/TTF
+
+这里也行：~/.fonts/ 
+
+ 
+
+刷新字体缓存
+
+代码:
+
+sudo fc-cache -fv
+
+ 
+
+备份原有设置,
+
+代码:
+
+cp /etc/fonts/conf.d/51-local.conf ~/51-local.conf_backup
+
+注意!下面为系统全局设置,如果只想看一下效果，编译~/.fonts.conf就成了.
+
+如果你已有自己的字体配置,为了不必要的麻烦,先把它们移除.
+
+ 
+
+字体渲染调整
+
+代码:
+
+sudo vi /etc/fonts/conf.d/51-local.conf
+
+把下面的复制到 <fontconfig> 与 </fontconfig> 之间。
+
+ 
+
+代码:
+
+<!--衬线字体选择顺序-->
+
+      <alias>
+
+              <family>serif</family>
+
+              <prefer>
+
+                      <family>Lucida Grande</family>
+
+                      <family>STHeiti</family>
+
+                      <family>LiHei Pro</family>
+
+              </prefer>
+
+      </alias>
+
+ 
+
+<!--无衬线字体选择顺序-->
+
+      <alias>
+
+              <family>sans-serif</family>
+
+              <prefer>
+
+                      <family>Lucida Grande</family>
+
+                      <family>STHeiti</family>
+
+                      <family>LiHei Pro</family>
+
+              </prefer>
+
+      </alias>
+
+ 
+
+<!--打开Lucida Grande的微调(轻微)-->
+
+      <match target="font">
+
+              <test name="family" compare="contains">
+
+                      <string>Lucida Grande</string>
+
+              </test>
+
+              <edit name="hinting" mode="assign">
+
+                      <bool>true</bool>
+
+              </edit>
+
+              <edit name="autohint" mode="assign">
+
+                      <bool>false</bool>
+
+              </edit>
+
+              <edit name="antialias" mode="assign">
+
+                      <bool>true</bool>
+
+              </edit>
+
+              <edit name="hintstyle" mode="assign" >
+
+                      <const>hintslight</const>
+
+              </edit>
+
+      </match>
+
+ 
+
+<!--关闭STHeiti和LiHei Pro的微调-->
+
+      <match target="font">
+
+              <test name="family" compare="contains">
+
+                      <string>STHeiti</string>
+
+                      <string>LiHei Pro</string>
+
+              </test>
+
+              <edit name="hinting" mode="assign">  
+
+                      <bool>false</bool>
+
+              </edit>
+
+              <edit name="autohint" mode="assign">  
+
+                      <bool>false</bool>
+
+              </edit>
+
+              <edit name="antialias" mode="assign">  
+
+                      <bool>true</bool>
+
+              </edit>
+
+      </match>
+
+ 
+
+ 
+
+<!--等宽字体选择顺序-->
+
+<alias>
+
+        <family>monospace</family>
+
+        <prefer>
+
+                <family>Bitstream Vera Sans Mono</family>
+
+                <family>DejaVu Sans </family>
+
+                <family>Andale Mono</family>
+
+                <family>Courier New</family>
+
+                <family>Courier</family>
+
+                <family>AR PL New Sung Mono</family>
+
+                <family>AR PL New Sung</family>
+
+                <family>AR PL ShanHeiSun Uni</family>
+
+                <family>Kochi Gothic</family>
+
+                <family>Baekmuk Dotum</family>
+
+        </prefer>
+
+</alias>
+
+等宽字体首选为Bitstream Vera Sans Mono（需要自行安装）,当然,你可以换成自己喜欢的. 
+
+代码:
+
+sudo pacman -S ttf-bitstream-vera
+
+fontconfig设置教程，有兴趣可以看看。
+
+ 
+
+重启X，设置好wm的字体，效果就出来了。
+
+ 
+
+补充说明：我倾向于系统菜单使用STHeiti，文本使用LiHei Pro。
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+方法二.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1.安装字体
+yaourt -S font-bh-ttf ttf-arphic-ukai ttf-arphic-uming ttf-bitstream-vera ttf-cheapskate ttf-dejavu ttf-fireflysung ttf-ms-fonts wqy-bitmapfont 
+wqy-zenhei wqy-microhei
+2.安装带补丁的cairo  libxft freetype2 fontconfig
+yaourt -S cairo-ubuntu libxft-ubuntu freetype2-ubuntu fontconfig-ubuntu
+3. 安装通用字体配置文件
+linuxsir–arxhlinux版的 jarryson 为我们制作了通用的字体配置文件，效果非常好。
+
+详见：http://www.linuxsir.org/bbs/thread339541.html
+
+更新打包文件:  fontconfig-7.tar.gz http://www.box.net/shared/bflybsxjf6
+
+fontsconf压缩包，解压后进入目录执行 makepkg -si 即可完成安装，然后根据自己的需求把相应的字体配置文件做好软连接。
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+

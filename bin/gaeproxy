@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /pentest/script/proxy/
+./start.sh

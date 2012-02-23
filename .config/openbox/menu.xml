@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu>
+	<menu id="root-menu" label="OpenBox 3">
+		<item label="Term">
+			<action name="Execute">
+				<execute>
+					urxvt
+				</execute>
+			</action>
+		</item>
+		<item label="Firefox">
+			<action name="Execute">
+				<execute>
+					firefox
+				</execute>
+			</action>
+		</item>
+		<item label="Thunar">
+			<action name="Execute">
+				<execute>
+					thunar
+				</execute>
+			</action>
+		</item>
+		<item label="House Music">
+			<action name="Execute">
+				<execute>
+					mplayer -loop 0 -playlist /opt/music/.m3u
+				</execute>
+			</action>
+		</item>
+		<item label="vmware">
+			<action name="Execute">
+				<execute>
+					vmware
+				</execute>
+			</action>
+		</item>
+		<menu id="1" label="Development">
+			<item label="Eclipse">
+				<action name="Execute">
+					<execute>
+						eclipse
+					</execute>
+				</action>
+			</item>
+			<item label="GDB">
+				<action name="Execute">
+					<execute>
+						urxvt -e gdb
+					</execute>
+				</action>
+			</item>
+			<item label="Python">
+				<action name="Execute">
+					<execute>
+						urxvt -e python
+					</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="2" label="Editors">
+			<item label="ghex">
+				<action name="Execute">
+					<execute>
+						ghex
+					</execute>
+				</action>
+			</item>
+			<item label="GVim">
+				<action name="Execute">
+					<execute>
+						gvim
+					</execute>
+				</action>
+			</item>
+			<item label="Vim">
+				<action name="Execute">
+					<execute>
+						urxvt -e vim
+					</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="7" label="Multimedia">
+			<item label="ALSA mixer">
+				<action name="Execute">
+					<execute>
+						urxvt -e alsamixer
+					</execute>
+				</action>
+			</item>
+			<item label="Moc">
+				<action name="Execute">
+					<execute>
+						urxvt -e mocp
+					</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="5" label="Network">
+			<menu id="5-0129" label="pentest">
+				<item label="pentest box">
+					<action name="Execute">
+						<execute>
+							rdesktop -g 1024x768 -r clipboard:PRIMARYCLIPBOARD 192.168.0.4
+						</execute>
+					</action>
+				</item>
+				<item label="john">
+					<action name="Execute">
+						<execute>
+							urxvt -icon '/opt/images/as.jps' -name 'john' -cd '/pentest/passwords/john/'
+						</execute>
+					</action>
+				</item>
+				<item label="sqlmap">
+					<action name="Execute">
+						<execute>
+							urxvt -icon '/opt/images/as.jpg' -name 'sqlmap' -cd '/pentest/web/scanners/sqlmap/'
+						</execute>
+					</action>
+				</item>
+			</menu>
+			<item label="tor">
+				<action name="Execute">
+					<execute>
+						/pentest/tunneling/tor/start-tor-browser
+					</execute>
+				</action>
+			</item>
+			<item label="GAE Proxy">
+				<action name="Execute">
+					<execute>
+						~/bin/gaeproxy
+					</execute>
+				</action>
+			</item>
+			<item label="Pidgin">
+				<action name="Execute">
+					<execute>
+						pidgin
+					</execute>
+				</action>
+			</item>
+			<item label="qq">
+				<action name="Execute">
+					<execute>
+						/opt/qq/loader
+					</execute>
+				</action>
+			</item>
+		</menu>
+		<separator/>
+		<menu id="40" label="OpenBox">
+			<item label="Obmenu">
+				<action name="Execute">
+					<execute>
+						obmenu
+					</execute>
+				</action>
+			</item>
+			<item label="Obconf">
+				<action name="Execute">
+					<execute>
+						obconf
+					</execute>
+				</action>
+			</item>
+			<item label="Tint2conf">
+				<action name="Execute">
+					<execute>
+						tint2conf
+					</execute>
+				</action>
+			</item>
+			<item label="Appearance">
+				<action name="Execute">
+					<execute>
+						lxappearance
+					</execute>
+				</action>
+			</item>
+			<item label="Reconfigure">
+				<action name="Reconfigure"/>
+			</item>
+			<menu id="client-list-menu"/>
+			<separator/>
+			<item label="Reboot">
+				<action name="Execute">
+					<execute>
+						sudo shutdown -r now
+					</execute>
+				</action>
+			</item>
+			<item label="Shutdown">
+				<action name="Execute">
+					<execute>
+						sudo shutdown -h now
+					</execute>
+				</action>
+			</item>
+			<item label="Exit">
+				<action name="Exit"/>
+			</item>
+		</menu>
+	</menu>
+</openbox_menu>

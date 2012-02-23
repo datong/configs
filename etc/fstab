@@ -1,0 +1,12 @@
+# 
+# /etc/fstab: static file system information
+#
+# <file system>	<dir>	<type>	<options>	<dump>	<pass>
+tmpfs		/tmp	tmpfs	nodev,nosuid	0	0
+
+
+/dev/sda5 swap swap defaults 0 0
+UUID=37335cc2-0e24-49ba-a95b-7cbbf1ee962a / reiserfs defaults 0 1
+UUID=2b6a3326-7af2-4e49-9726-f1778f0d978b /home reiserfs defaults 0 1
+/dev/sda6 /opt reiserfs defaults 0 0
+/dev/sda7 /pentest reiserfs defaults 0 0

@@ -1,0 +1,62 @@
+## Navigation:
+alias ~="cd $HOME"
+alias ..="cd .."
+alias ...="cd ../../"
+alias cd..="cd .."
+
+## use color where appropriate
+#alias ls="ls --color=auto -h"
+#alias grep="grep --color=auto -I" # skip binary files
+#alias egrep="egrep --color=auto"
+## Editors:
+alias v="$EDITOR"
+alias sv="sudo $EDITOR"
+alias svim="sudo $EDITOR"
+
+##usb mount
+alias usb="sudo mount -t vfat -o iocharset=utf8,rw,uid=d,gid=d /dev/sdb1 /mnt/usb"
+alias unusb="sudo umount /mnt/usb"
+
+## Common
+alias rdp="rdesktop -g 1024x768 -r clipboard:PRIMARYCLIPBOARD"
+alias xp="sudo mount -t vfat -o iocharset=utf8,rw,uid=arus7 /dev/sda6 /opt/xp"
+alias proxy="ssh -C2qTfnN -D 7070"
+alias sshtunnel='ssh -fND 7070'
+alias gh0st='sudo /etc/rc.d/ppp start tw'
+alias ghxst='sudo /etc/rc.d/ppp stop'
+alias screenie='~/.scprit/info.pl'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias chkip='curl ifconfig.me'
+alias crmd5='/pentest/script/cmd5.pl'
+alias crpwd='/pentest/script/passcrack.py'
+alias wget='wget -c'
+alias oports="echo 'User:      Command:   Port:'; echo '----------------------------' ; lsof -i 4 -P -n | grep -i 'listen' | awk '{print \$3, \$1, \$9}' | sed 's/ [a-z0-9\.\*]*:/ /' | sort -k 3 -n |xargs printf '%-10s %-10s %-10s\n' | uniq"
+alias g2u="iconv -f gb18030 -t utf-8"
+alias du='du -h --max-depth=1'
+
+alias df="df -h -T"
+alias mkdir="mkdir -p -v"
+alias l="ls"
+alias l1="ls -1"
+alias ll="ls -l"
+alias la="ls -A"
+alias l1a="ls -a1"
+alias lla="ls -al"
+alias cp="cp -ir"
+alias mv="mv -i"
+alias rm="rm -I -v"
+alias du="du -h"
+alias h="history"
+
+
+
+alias appcfg='python2.7 /opt/tools/google_appengine/appcfg.py'
+alias appserver='python2.7 /opt/tools/google_appengine/dev_appserver.py'
+#vim: nospell
+
+alias pwget='export http_proxy=http://127.0.0.1:9990 && wget -proxy=on -c'
+alias xrm='shred -n 31337 -z -u' 
+#'ssh -T IP /bin/bash -i'
+
+alias dtp='sudo truecrypt -t -k "" --protect-hidden=no /xxx --fs-options=utf8,uid=d,rw /media/truecrypt1'
