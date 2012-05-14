@@ -31,7 +31,7 @@ use_spacer yes
 TEXT
 ${voffset 10}${offset 50}${color EAEAEA}${font Subway Novella:pixelsize=120}${time %H:%M:%S}${font}
 ${voffset 10}${offset 150}${color EAEAEA}${font Subway Novella:pixelsize=25}${time %Y.%B.%d}${font}
-${voffset 1}${offset 12}${voffset 850}${offset -690}${font Ubuntu:pixelsize=10}${color #FFFFFF}HD ${offset 9}${fs_free /} / ${fs_size /}$color${offset 30}${color #FFFFFF}RAM ${offset 9}$mem / $memmax$color${offset 30}${color #FFFFFF}CPU ${offset 9}${cpu cpu0}% ${cpu cpu1}%$color
+${voffset 1}${offset 12}${voffset 850}${offset -800}${font Ubuntu:pixelsize=10}${color #FFFFFF}HD ${offset 9}${fs_free /} / ${fs_size /}$color${offset 30}${color #FFFFFF}RAM ${offset 9}$mem / $memmax$color${offset 30}${color #FFFFFF}CPU ${offset 9}${cpu cpu0}% ${cpu cpu1}%$color
 
 
 

@@ -1,0 +1,44 @@
+i: /usr/share/pixmaps/wbar/osxbarback.png
+c: wbar --bpress --above-desk --pos bottom --isize 32 --idist 11 --nanim 4 --falfa 65
+t: /home/d/.fonts/MTF Jumpin' Jack/10
+
+i: /usr/share/icons/F-Dark/places/48/folder.png
+c: thunar
+t: Thunar
+
+i: /usr/share/pixmaps/wbar/terminal.png
+c: terminal
+t: Terminal
+
+i: /usr/lib/firefox/icons/mozicon128.png
+c: firefox
+t: Firfox
+
+i: /opt/eclipse/configuration/org.eclipse.osgi/bundles/163/1/.cp/eclipse32.png
+c: /opt/eclipse
+t: eclipse
+
+i: /usr/share/pixmaps/wbar/ooffice.png
+c: libreoffice
+t: Office
+
+i: /usr/share/pixmaps/wbar/pidgin.png
+c: pidgin
+t: Pidgin
+
+i: /usr/share/pixmaps/wbar/gimp.png
+c: gimp
+t: Gimp
+
+i: /pentest/web/w3af/core/ui/gtkUi/data/w3af_logo.png
+c: /pentest/web/w3af/w3af_gui
+t: wSaf
+
+i: /usr/share/pixmaps/wbar/wbar.png
+c: wbar-config
+t: Config
+
+i: /usr/lib/vmware/share/pixmaps/vmware-player.png
+c: /usr/bin/vmware
+t: vmware 
+

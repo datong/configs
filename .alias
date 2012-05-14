@@ -59,4 +59,7 @@ alias pwget='export http_proxy=http://127.0.0.1:9990 && wget -proxy=on -c'
 alias xrm='shred -n 31337 -z -u' 
 #'ssh -T IP /bin/bash -i'
 
-alias dtp='sudo truecrypt -t -k "" --protect-hidden=no /xxx --fs-options=utf8,uid=d,rw /media/truecrypt1'
+alias dtp='sudo truecrypt -t -k "" --protect-hidden=no /pentest/.target/dtp --fs-options=utf8,uid=d,rw /media/truecrypt1'
+
+
+alias svg2png='sudo mogrify -format png -resize 64x64'
