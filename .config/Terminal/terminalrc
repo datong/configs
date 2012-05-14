@@ -16,11 +16,11 @@ MiscTabCloseButtons=TRUE
 MiscTabCloseMiddleClick=TRUE
 MiscTabPosition=GTK_POS_TOP
 MiscHighlightUrls=TRUE
-BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
-BackgroundDarkness=0.640000
-ColorCursor=#ffffffffffff
+ColorCursor=#555555555555
 TabActivityColor=#555555555555
 FontAllowBold=FALSE
 TitleMode=TERMINAL_TITLE_HIDE
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
+ColorForeground=#0a49efff1798
+BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
 

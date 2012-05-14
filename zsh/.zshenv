@@ -1,4 +1,4 @@
-PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/home/d/bin:/pentest/exploits/msf3:/opt/java/jre/bin:/opt/android/tools:/opt/tools/webserver/php/bin:/opt/nessus/bin:/opt/nessus/sbin:/opt/tools/webserver/mysql/bin:$PATH"
+PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/home/d/bin:/pentest/exploits/msf3:/opt/jdk1.6/bin:/opt/android/tools:/opt/tools/webserver/php/bin:/opt/nessus/bin:/opt/nessus/sbin:/opt/tools/webserver/mysql/bin:$PATH"
 export PATH
 
 # Kill flow control
@@ -78,5 +78,7 @@ setterm -bfreq 0
 #    clear #for background artifacting
 #fi
 
+#export GREP_COLOR='00;38;5;226'
+export GREP_COLORS='mt=38;5;0;48;5;190:fn=38;5;104:ln=38;5;214:se=38;5;242:bn=38;5;226'
 
 
