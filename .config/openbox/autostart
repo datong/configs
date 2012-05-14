@@ -42,6 +42,8 @@ sleep 2; conky &
 #xcompmgr -r0 &
 #(sleep 8 && xcompmgr -Ss -n -Cc -fF -I-10 -O-10 -D1 -t-3 -l-4 -r4) &
 #fi
+killall wbar > /dev/null 2>&1
+sleep 2; wbar &
 
 #去掉电源管理&屏幕保护
 sleep 3 
