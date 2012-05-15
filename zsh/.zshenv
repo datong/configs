@@ -82,3 +82,11 @@ setterm -bfreq 0
 export GREP_COLORS='mt=38;5;0;48;5;190:fn=38;5;104:ln=38;5;214:se=38;5;242:bn=38;5;226'
 
 
+#Java:
+export JAVA_HOME=/opt/jdk1.6
+export JRE_HOME=/opt/jdk1.6/jre
+export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH
+
+export MAVEN_HOME=/opt/maven
+export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$MAVEN_HOME/bin:/opt/android/sdk/tools:$PATH
+

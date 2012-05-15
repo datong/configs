@@ -291,10 +291,5 @@ sanitize() {
 }
 
 
-#Java:
-export JAVA_HOME=/opt/jdk1.6
-export JRE_HOME=/opt/jdk1.6/jre
-export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH
-export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
 # }}}
 
