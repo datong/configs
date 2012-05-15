@@ -122,7 +122,9 @@ set t_vb=   " ^
 
 if has('gui_running')
     let &guicursor = &guicursor . ",a:blinkon0"
-    colorscheme solarized
+   " colorscheme solarized
+   " colorscheme desert
+     colorscheme lilypink
     set guifont=Monaco\ 11
     set guioptions-=T
     "set guioptions+=g
@@ -139,12 +141,13 @@ elseif (&term =~ 'linux')
     set t_Co=16
     set termencoding=utf-8
     set nocursorline
-    colorscheme desert
+    colorscheme lilypink
 else
     set t_Co=256
     set mouse=a         
     "colorscheme solarized
-    colorscheme desert
+    "colorscheme desert
+    colorscheme lilypink
     set termencoding=utf-8 
 endif
 
