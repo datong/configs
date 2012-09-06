@@ -11,6 +11,8 @@ autoload -U complist
 compinit
 # }}}
 
+#ulimit -HSn 65535
+
 # {{{ History
 HISTFILE=/tmp/.arus7
 #HISTSIZE=5000
