@@ -10,6 +10,49 @@ set shell=/bin/bash
 filetype on
 set complete=k          " global autocompletion
 set completeopt+=longest
+set smarttab
+
+" 不要响铃，更不要闪屏
+set visualbell t_vb=
+au GUIEnter * set t_vb=
+set viminfo='100,:10000,<50,s10,h
+set history=10000
+set wildmenu
+set delcombine " 组合字符一个个地删除
+set laststatus=2 " 总是显示状态栏
+" 首先尝试最长的，接着轮换补全项
+set wildmode=longest:full,full
+set ambiwidth=double
+set shiftround
+set diffopt+=vertical,context:3,foldcolumn:0
+set fileencodings=ucs-bom,utf-8,gb18030,cp936,latin1
+set fileformats=unix,dos,mac
+set formatoptions=croqn2mB1
+set formatexpr=autofmt#uax14#formatexpr()
+set nojoinspaces
+set virtualedit=block
+set nostartofline
+" set guioptions=egmrLtai
+set guioptions=acit
+set mousemodel=popup
+" 没必要，而且很多时候 = 表示赋值
+set isfname-==
+set nolinebreak
+set nowrapscan
+set scrolloff=5
+set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,slash,unix,resize
+set shiftwidth=2
+set winaltkeys=no
+set noequalalways
+set listchars=eol:$,tab:>-,nbsp:~
+set display=lastline
+set completeopt+=longest
+set maxcombine=4
+set cedit=<C-Y>
+set whichwrap=b,s,[,]
+set tags+=./../tags,./../../tags,./../../../tags
+
+command Thunar silent !thunar %:p:h
 
 " Indenting, Folding..
 set tabstop=4           " numbers of spaces of tab character
@@ -58,23 +101,6 @@ let Tlist_Exit_OnlyWindow=1 "当taglist是最后一个分割窗口时，自动�
 let Tlist_Process_File_Always=0 "是否一直处理tags.1:处理;0:不处理。不是一直实时更新tags，因为没有必要
 let Tlist_Inc_Winwidth=0
 
-" VTreeExplorer
-map <F4> :VSTreeExplore <CR>
-let g:treeExplVertical=1
-let g:treeExplWinSize=20
-let g:treeExplDirSort=1
-
-" common save shortcuts
-" inoremap <C-s> <esc>:w<cr>a
-" nnoremap <C-s> :w<cr>
-
-" Set bracket matching and comment formats
-set matchpairs+=<:>
-set comments-=s1:/*,mb:*,ex:*/
-set comments+=s:/*,mb:**,ex:*/
-set comments+=fb:*
-set comments+=b:\"
-set comments+=n::
 
 " Fix filetype detection
 au BufNewFile,BufRead .torsmorc* set filetype=rc
@@ -125,7 +151,8 @@ if has('gui_running')
    " colorscheme solarized
    " colorscheme desert
      colorscheme lilypink
-    set guifont=Monaco\ 11
+     set cursorline
+    "set guifont=Monaco\ 11
     set guioptions-=T
     "set guioptions+=g
     "set guioptions-=t
@@ -140,11 +167,12 @@ if has('gui_running')
 elseif (&term =~ 'linux')
     set t_Co=16
     set termencoding=utf-8
-    set nocursorline
+    set cursorline
     colorscheme lilypink
 else
     set t_Co=256
-    set mouse=a         
+    set mouse=a   
+    set cursorline      
     "colorscheme solarized
     "colorscheme desert
     colorscheme lilypink
