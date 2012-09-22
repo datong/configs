@@ -1,4 +1,4 @@
-PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/home/d/bin:/pentest/exploits/msf3:/opt/jdk1.6/bin:/opt/android/tools:/opt/tools/webserver/php/bin:/opt/nessus/bin:/opt/nessus/sbin:/opt/tools/webserver/mysql/bin:$PATH"
+PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/home/d/scripts:/pentest/exploits/msf3:/opt/jdk1.6/bin:/opt/android/tools:/opt/tools/webserver/php/bin:/opt/nessus/bin:/opt/nessus/sbin:/opt/tools/webserver/mysql/bin:$PATH"
 export PATH
 
 # Kill flow control
@@ -87,6 +87,6 @@ export JAVA_HOME=/opt/jdk1.6
 export JRE_HOME=/opt/jdk1.6/jre
 export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH
 
-export MAVEN_HOME=/opt/maven
-export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$MAVEN_HOME/bin:/opt/android/sdk/tools:$PATH
+#export MAVEN_HOME=/opt/maven
+export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
 
