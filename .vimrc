@@ -55,15 +55,15 @@ set tags+=./../tags,./../../tags,./../../../tags
 command Thunar silent !thunar %:p:h
 
 " Indenting, Folding..
-set tabstop=4           " numbers of spaces of tab character
-set shiftwidth=4        " numbers of spaces to (auto)indent
-set softtabstop=4       " counts n spaces when DELETE or BCKSPCE is used
-set expandtab           " insert spaces instead of tab chars
-set autoindent         	" always set autoindenting on
-set nosmartindent       " intelligent indenting -- DEPRECATED by cindent
-set nocindent           " set C style indenting off
-set foldenable
-set foldmethod=marker
+" set tabstop=4           " numbers of spaces of tab character
+" set shiftwidth=4        " numbers of spaces to (auto)indent
+" set softtabstop=4       " counts n spaces when DELETE or BCKSPCE is used
+" set expandtab           " insert spaces instead of tab chars
+" set autoindent         	" always set autoindenting on
+" set nosmartindent       " intelligent indenting -- DEPRECATED by cindent
+" set nocindent           " set C style indenting off
+" set foldenable
+" set foldmethod=marker
 
 
 " searching
@@ -147,24 +147,18 @@ set t_vb=   " ^
 " match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
 
 if has('gui_running')
-    let &guicursor = &guicursor . ",a:blinkon0"
-   " colorscheme solarized
-   " colorscheme desert
-     colorscheme lilypink
-     set cursorline
-    "set guifont=Monaco\ 11
-    set guioptions-=T
-    "set guioptions+=g
-    "set guioptions-=t
-    "set guioptions-=m
-    set guioptions-=L
-    set guioptions-=l
-    set guioptions-=r
-    set guioptions-=R
-    set guitablabel=%t " set label for tab to just file name
-    set anti " Antialias font
-    "set transparency=0
+  set columns=88
+  set lines=38
+  set number
+  set cursorline
+  colorscheme lilypink
 elseif (&term =~ 'linux')
+    if &term == "linux" || &term == "fbterm"
+      set t_ve+=[?6c
+      autocmd InsertEnter * set t_ve-=[?6c
+      autocmd InsertLeave * set t_ve+=[?6c
+      " autocmd VimLeave * set t_ve-=[?6c
+    endif
     set t_Co=16
     set termencoding=utf-8
     set cursorline
@@ -205,60 +199,18 @@ nmap csn :lcd %:p:h<CR>:!my_cscope<CR>
 nmap cs<Space> :cs find
 
 function Do_CsTag()
-    let dir = getcwd()
-    if filereadable("tags")
-        if(g:iswindows==1)
-            let tagsdeleted=delete(dir."\\"."tags")
-        else
-            let tagsdeleted=delete("./"."tags")
-        endif
-        if(tagsdeleted!=0)
-            echohl WarningMsg | echo "Fail to do tags! I cannot delete the tags" | echohl None
-            return
-        endif
-    endif
-    if has("cscope")
-        silent! execute "cs kill -1"
-    endif
-    if filereadable("cscope.files")
-        if(g:iswindows==1)
-            let csfilesdeleted=delete(dir."\\"."cscope.files")
-        else
-            let csfilesdeleted=delete("./"."cscope.files")
-        endif
-        if(csfilesdeleted!=0)
-            echohl WarningMsg | echo "Fail to do cscope! I cannot delete the cscope.files" | echohl None
-            return
-        endif
-    endif
-    if filereadable("cscope.out")
-        if(g:iswindows==1)
-            let csoutdeleted=delete(dir."\\"."cscope.out")
-        else
-            let csoutdeleted=delete("./"."cscope.out")
-        endif
-        if(csoutdeleted!=0)
-            echohl WarningMsg | echo "Fail to do cscope! I cannot delete the cscope.out" | echohl None
-            return
-        endif
-    endif
-    if(executable('ctags'))
-        "silent! execute "!ctags -R --c-types=+p --fields=+S *"
-        silent! execute "!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q ."
-    endif
     if(executable('cscope') && has("cscope") )
         if(g:iswindows!=1)
             silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' > cscope.files"
         else
-            silent! execute "!dir /s/b *.c,*.cpp,*.h,*.java,*.cs >> cscope.files"
+            silent! execute "!dir /b *.c,*.cpp,*.h,*.java,*.cs >> cscope.files"
         endif
         silent! execute "!cscope -b"
-        execute "normal :"
         if filereadable("cscope.out")
             execute "cs add cscope.out"
         endif
     endif
-endfunction
+endf
 
 source ~/.vim/indent/python.vim
 set nobackup

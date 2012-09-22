@@ -18,16 +18,16 @@ alias usb="sudo mount -t vfat -o iocharset=utf8,rw,uid=d,gid=d /dev/sdb1 /mnt/us
 alias unusb="sudo umount /mnt/usb"
 
 ## Common
-alias rdp="rdesktop -g 1024x768 -r clipboard:PRIMARYCLIPBOARD"
+alias rdp="rdesktop -u administrator -n NULL -g 1024x768 -r clipboard:PRIMARYCLIPBOARD"
 alias xp="sudo mount -t vfat -o iocharset=utf8,rw,uid=arus7 /dev/sda6 /opt/xp"
 alias proxy="ssh -C2qTfnN -D 7070"
 alias sshtunnel='ssh -fND 7070'
-alias gh0st='sudo /etc/rc.d/ppp start tw'
+alias gh0st='sudo /etc/rc.d/ppp start et'
 alias ghxst='sudo /etc/rc.d/ppp stop'
 alias screenie='~/.scprit/info.pl'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
-alias chkip='curl ifconfig.me'
+alias chkip='curl ifconfig.me/ip'
 alias crmd5='/pentest/script/cmd5.pl'
 alias crpwd='/pentest/script/passcrack.py'
 alias wget='wget -c'
@@ -51,11 +51,11 @@ alias h="history"
 
 
 
-alias appcfg='python2.7 /opt/tools/google_appengine/appcfg.py'
-alias appserver='python2.7 /opt/tools/google_appengine/dev_appserver.py'
+alias appcfg='python2.7 /opt/gae/appcfg.py'
+alias appserver='python2.7 /opt/gae/dev_appserver.py'
 #vim: nospell
 
-alias pwget='export http_proxy=http://127.0.0.1:9990 && wget -proxy=on -c'
+alias pwget='export http_proxy=http://127.0.0.1:9990 && wget -c'
 alias xrm='shred -n 31337 -z -u' 
 #'ssh -T IP /bin/bash -i'
 
@@ -63,3 +63,9 @@ alias dtp='sudo truecrypt -t -k "" --protect-hidden=no /pentest/.target/dtp --fs
 
 
 alias svg2png='sudo mogrify -format png -resize 64x64'
+
+alias signapk='signapk -w /opt/android/sdk/tools/publickey.x509.pem /opt/android/sdk/tools/privatekey.pk8'
+
+alias curl='curl -A " "'
+
+alias minicom="sudo minicom -l -c on"
