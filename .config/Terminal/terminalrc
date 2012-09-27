@@ -18,9 +18,11 @@ MiscTabPosition=GTK_POS_TOP
 MiscHighlightUrls=TRUE
 ColorCursor=#555555555555
 TabActivityColor=#555555555555
-FontAllowBold=FALSE
 TitleMode=TERMINAL_TITLE_HIDE
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
-ColorForeground=#0a49efff1798
 BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
+CommandUpdateRecords=FALSE
+FontAllowBold=FALSE
+ColorForeground=#ccccb2b2b2b2
+ColorPalette11=#0000ffff0000
 
