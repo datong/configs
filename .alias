@@ -19,12 +19,12 @@ alias unusb="sudo umount /mnt/usb"
 
 ## Common
 alias rdp="rdesktop -u administrator -n NULL -g 1024x768 -r clipboard:PRIMARYCLIPBOARD"
-alias xp="sudo mount -t vfat -o iocharset=utf8,rw,uid=arus7 /dev/sda6 /opt/xp"
+alias rbox="rdesktop 127.0.0.1 -u administrator -n NULL -g 1280x1024 -r clipboard:PRIMARYCLIPBOARD -D -N -k en-us -r sound:remote"
+alias xp="VBoxManage startvm xp --type headless"
 alias proxy="ssh -C2qTfnN -D 7070"
 alias sshtunnel='ssh -fND 7070'
 alias gh0st='sudo /etc/rc.d/ppp start et'
 alias ghxst='sudo /etc/rc.d/ppp stop'
-alias screenie='~/.scprit/info.pl'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias chkip='curl ifconfig.me/ip'
@@ -60,7 +60,6 @@ alias xrm='shred -n 31337 -z -u'
 #'ssh -T IP /bin/bash -i'
 
 alias dtp='sudo truecrypt -t -k "" --protect-hidden=no /pentest/.target/dtp --fs-options=utf8,uid=d,rw /media/truecrypt1'
-
 
 alias svg2png='sudo mogrify -format png -resize 64x64'
 
